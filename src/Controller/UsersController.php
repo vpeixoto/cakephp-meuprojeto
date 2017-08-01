@@ -2,22 +2,45 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
-/**
- * Users Controller
- *
- * @property \App\Model\Table\UsersTable $Users
- *
- * @method \App\Model\Entity\User[] paginate($object = null, array $settings = [])
- */
+
 class UsersController extends AppController
 {
-
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|void
-     */
+	
+	public function login()
+	{
+		//debug($this->request->data);
+		if ($this->request->is('post')) {
+			$user = $this->Auth->identify();
+			if ($user) {
+				$this->Auth->setUser($user);
+				return $this->redirect($this->Auth->redirectUrl());
+			}
+			$this->Flash->error(__('Usuário ou senha ínvalido, tente novamente'));
+		}
+	}
+	/*
+	public function login()
+    {
+		//debug($this->request->data);
+		if ($this->Auth->login()) {
+			$this->redirect($this->Auth->redirect());
+		} else {
+			$this->Flash->error(__('Invalid username or password, try again'));
+		}
+    }
+	*/
+	
+	public function logout()
+	{
+		return $this->redirect($this->Auth->logout());
+	}
+	/*
+	public function logout() {
+		$this->redirect($this->Auth->logout());
+	}
+	*/
     public function index()
     {
         $this->paginate = [
@@ -29,13 +52,6 @@ class UsersController extends AppController
         $this->set('_serialize', ['users']);
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|void
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
@@ -46,11 +62,6 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
     public function add()
     {
         $user = $this->Users->newEntity();
@@ -68,13 +79,6 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
@@ -94,13 +98,6 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -113,4 +110,22 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+	
+	public function beforeFilter(Event $event) {
+		parent::beforeFilter($event);
+		$this->Auth->allow(['add', 'logout']); 
+		// Permitindo que os usuários se registrem
+	}
+	
+	/*
+	public function beforeFilter(Event $event)
+	{
+		parent::beforeFilter($event);
+		// Permitir aos usuários se registrarem e efetuar logout.
+		// Você não deve adicionar a ação de "login" a lista de permissões.
+		// Isto pode causar problemas com o funcionamento normal do AuthComponent.
+		$this->Auth->allow(['add', 'logout']);
+	}
+	*/
 }
+

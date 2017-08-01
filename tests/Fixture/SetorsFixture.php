@@ -40,8 +40,8 @@ class SetorsFixture extends TestFixture
         [
             'id' => 1,
             'setor_name' => 'Lorem ipsum dolor sit amet',
-            'created' => '2017-07-24 14:15:23',
-            'modified' => '2017-07-24 14:15:23'
+            'created' => '2017-07-26 18:04:36',
+            'modified' => '2017-07-26 18:04:36'
         ],
     ];
 }
