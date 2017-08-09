@@ -2852,3 +2852,29 @@ Stack Trace:
 #18 {main}
 
 
+2017-08-09 21:27:46 Error: [PDOException] SQLSTATE[HY000]: General error: 11 database disk image is malformed in /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php on line 174
+Request URL: /users
+Referer URL: http://localhost:8888/projeto2/users/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(174): PDOStatement->execute(NULL)
+#1 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Database/Statement/StatementDecorator.php(174): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#2 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Database/Statement/BufferedStatement.php(76): Cake\Database\Statement\StatementDecorator->execute(NULL)
+#3 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Database/Statement/SqliteStatement.php(41): Cake\Database\Statement\BufferedStatement->execute(NULL)
+#4 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Database/Connection.php(311): Cake\Database\Statement\SqliteStatement->execute()
+#5 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Database/Query.php(213): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#6 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/ORM/Table.php(1916): Cake\Database\Query->execute()
+#7 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/ORM/Table.php(1810): Cake\ORM\Table->_insert(Object(DebugKit\Model\Entity\Request), Array)
+#8 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/ORM/Table.php(1723): Cake\ORM\Table->_processSave(Object(DebugKit\Model\Entity\Request), Object(ArrayObject))
+#9 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/ORM/Table.php(1446): Cake\ORM\Table->Cake\ORM\{closure}()
+#10 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Database/Connection.php(678): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#11 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/ORM/Table.php(1447): Cake\Database\Connection->transactional(Object(Closure))
+#12 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/ORM/Table.php(1724): Cake\ORM\Table->_executeTransaction(Object(Closure), true)
+#13 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/debug_kit/src/ToolbarService.php(204): Cake\ORM\Table->save(Object(DebugKit\Model\Entity\Request))
+#14 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php(53): DebugKit\ToolbarService->saveData(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#15 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Http/Runner.php(65): DebugKit\Middleware\DebugKitMiddleware->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response), Object(Cake\Http\Runner))
+#16 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Http/Runner.php(51): Cake\Http\Runner->__invoke(Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#17 /Applications/MAMP/htdocs/projeto2/vendor/cakephp/cakephp/src/Http/Server.php(80): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Cake\Http\ServerRequest), Object(Cake\Http\Response))
+#18 /Applications/MAMP/htdocs/projeto2/webroot/index.php(37): Cake\Http\Server->run()
+#19 {main}
+
+
