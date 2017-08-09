@@ -10,6 +10,8 @@ class UsersController extends AppController
 	
 	public function login()
 	{
+
+		$this->viewBuilder()->layout('login');
 		//debug($this->request->data);
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
@@ -20,27 +22,12 @@ class UsersController extends AppController
 			$this->Flash->error(__('Usuário ou senha ínvalido, tente novamente'));
 		}
 	}
-	/*
-	public function login()
-    {
-		//debug($this->request->data);
-		if ($this->Auth->login()) {
-			$this->redirect($this->Auth->redirect());
-		} else {
-			$this->Flash->error(__('Invalid username or password, try again'));
-		}
-    }
-	*/
 	
 	public function logout()
 	{
 		return $this->redirect($this->Auth->logout());
 	}
-	/*
-	public function logout() {
-		$this->redirect($this->Auth->logout());
-	}
-	*/
+	
     public function index()
     {
         $this->paginate = [
@@ -113,7 +100,7 @@ class UsersController extends AppController
 	
 	public function beforeFilter(Event $event) {
 		parent::beforeFilter($event);
-		$this->Auth->allow(['add', 'logout']); 
+		$this->Auth->allow(['logout']); 
 		// Permitindo que os usuários se registrem
 	}
 	
@@ -127,5 +114,26 @@ class UsersController extends AppController
 		$this->Auth->allow(['add', 'logout']);
 	}
 	*/
+	
+	public function isAuthorized($user)
+	{
+		//debug($user['setor_id']);
+		/*
+		// All registered users can add articles
+		if ($this->request->getParam('action') === 'add') {
+			return true;
+		}
+		*/
+		// The owner of an article can edit and delete it
+		if (in_array($this->request->getParam('action'), ['edit', 'delete', 'add'])) {
+			//$articleId = (int)$this->request->getParam('pass.0');
+			if ($user['setor_id'] == 1) {
+				return true;
+			}
+			return false;
+		}
+
+		return parent::isAuthorized($user);
+	}
 }
 

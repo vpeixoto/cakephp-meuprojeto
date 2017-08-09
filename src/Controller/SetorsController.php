@@ -108,4 +108,25 @@ class SetorsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+	
+	public function isAuthorized($user)
+	{
+		//debug($user['setor_id']);
+		/*
+		// All registered users can add articles
+		if ($this->request->getParam('action') === 'add') {
+			return true;
+		}
+		*/
+		// The owner of an article can edit and delete it
+		if (in_array($this->request->getParam('action'), ['edit', 'delete', 'add'])) {
+			//$articleId = (int)$this->request->getParam('pass.0');
+			if ($user['setor_id'] == 1) {
+				return true;
+			}
+			return false;
+		}
+
+		return parent::isAuthorized($user);
+	}
 }

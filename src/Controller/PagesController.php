@@ -28,7 +28,12 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
 
+        $this->viewBuilder()->layout('login');
+    }
     /**
      * Displays a view
      *
