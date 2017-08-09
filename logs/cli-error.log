@@ -1,0 +1,31 @@
+2017-07-24 14:09:21 Error: [Cake\Console\Exception\MissingShellException] Shell class for "Bbake" could not be found. in C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php on line 327
+Exception Attributes: array (
+  'class' => 'Bbake',
+)
+Stack Trace:
+#0 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(226): Cake\Console\ShellDispatcher->findShell('bbake')
+#1 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#2 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#3 C:\xampp\htdocs\projeto\bin\cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#4 {main}
+
+
+2017-07-24 14:14:55 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'projeto1.functions' doesn't exist in C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Database\Schema\Collection.php on line 131
+Stack Trace:
+#0 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Database\Schema\Collection.php(97): Cake\Database\Schema\Collection->_reflect('Column', 'functions', Array, Object(Cake\Database\Schema\TableSchema))
+#1 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Database\Schema\CachedCollection.php(63): Cake\Database\Schema\Collection->describe('functions', Array)
+#2 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\ORM\Table.php(531): Cake\Database\Schema\CachedCollection->describe('functions')
+#3 C:\xampp\htdocs\projeto\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(321): Cake\ORM\Table->getSchema()
+#4 C:\xampp\htdocs\projeto\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(218): Bake\Shell\Task\ModelTask->findBelongsTo(Object(App\Model\Table\FunctionsTable), Array)
+#5 C:\xampp\htdocs\projeto\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(127): Bake\Shell\Task\ModelTask->getAssociations(Object(App\Model\Table\FunctionsTable))
+#6 C:\xampp\htdocs\projeto\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(110): Bake\Shell\Task\ModelTask->getTableContext(Object(App\Model\Table\FunctionsTable), 'functions', 'Functions')
+#7 C:\xampp\htdocs\projeto\vendor\cakephp\bake\src\Shell\Task\ModelTask.php(97): Bake\Shell\Task\ModelTask->bake('Functions')
+#8 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\Shell.php(472): Bake\Shell\Task\ModelTask->main('Functions')
+#9 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\Shell.php(465): Cake\Console\Shell->runCommand(Array, false, Array)
+#10 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(230): Cake\Console\Shell->runCommand(Array, true, Array)
+#11 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(182): Cake\Console\ShellDispatcher->_dispatch(Array)
+#12 C:\xampp\htdocs\projeto\vendor\cakephp\cakephp\src\Console\ShellDispatcher.php(128): Cake\Console\ShellDispatcher->dispatch(Array)
+#13 C:\xampp\htdocs\projeto\bin\cake.php(34): Cake\Console\ShellDispatcher::run(Array)
+#14 {main}
+
+

@@ -61,13 +61,19 @@ class AppController extends Controller
 	    $all_users = $this->Users->find('all'); //or whatever you need to do to get the data
 	    $this->set('all_users', $all_users); 
 	    */
-	    $user_name = $this->Auth->user('name');	    
-	    $setor_id = $this->Auth->user('setor_id');
-		$this->set('user_name', $user_name);
+	    $user_id = $this->Auth->user('id');	    
 	    
-	    $user_sector = $this->loadModel('Setors')->get($setor_id);
-	    $setor_name = $user_sector['setor_name']; 
-		$this->set('setor_name', $setor_name);
+	    if (!empty($user_id))
+		{
+			$user_name = $this->Auth->user('name');	    
+		    $setor_id = $this->Auth->user('setor_id');
+			$this->set('user_name', $user_name);
+
+		    $user_sector = $this->loadModel('Setors')->get($setor_id);
+		    $setor_name = $user_sector['setor_name']; 
+			$this->set('setor_name', $setor_name);
+		}
+
     }
 	
 	/*public function beforeFilter(Event $event)
