@@ -46,19 +46,19 @@ body {
 	<?= $this->Flash->render('auth') ?>
 		<?= $this->Form->create() ?>
       <div class="form-signin form">
-      	<h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
+      	<h2 class="form-signin-heading">Faça o Login</h2>
+        <label for="inputEmail" class="sr-only">Usuário</label>
         <?= $this->Form->input('username') ?>
 		        
-        <label for="inputPassword" class="sr-only">Password</label>
+        <label for="inputPassword" class="sr-only">Senha</label>
 		<?= $this->Form->input('password') ?>
 
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> Lembrar me
           </label>
         </div>
-        <?= $this->Form->button(__('Login')); ?>
+        <?= $this->Form->button(__('Entrar')); ?>
       </form>
       <?= $this->Form->end() ?>
 
