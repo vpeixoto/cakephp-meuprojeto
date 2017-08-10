@@ -48,10 +48,10 @@ body {
       <div class="form-signin form">
       	<h2 class="form-signin-heading">Faça o Login</h2>
         <label for="inputEmail" class="sr-only">Usuário</label>
-        <?= $this->Form->input('username') ?>
+        <?= $this->Form->input('username', array('label' => "Usuário")) ?>
 		        
         <label for="inputPassword" class="sr-only">Senha</label>
-		<?= $this->Form->input('password') ?>
+		<?= $this->Form->input('password', array('label' => "Senha")) ?>
 
         <div class="checkbox">
           <label>
